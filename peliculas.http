@@ -1,0 +1,40 @@
+GET http://localhost:3000/api/peliculas
+
+
+###
+GET http://localhost:3000/api/peliculas?s=Dun
+
+###
+GET http://localhost:3000/api/peliculas/2
+
+###
+POST http://localhost:3000/api/peliculas
+Content-Type: application/json
+
+{
+    "titulo": "Pelicula 1",
+    "director": "Sinopsis de pelicula 1",
+    "anio": 2024,
+    "poster": "Sin poster",
+    "categorias": [2, 3]
+}
+{
+    "titulo": "Pelicula 2",
+    "director": "Sinopsis de pelicula 2",
+    "anio": 2024,
+    "poster": "Sin poster",
+    "categorias": [2, 3]
+}
+{
+    "titulo": "Pelicula 3",
+    "director": "Sinopsis de pelicula 3",
+    "anio": 2024,
+    "poster": "Sin poster",
+    "categorias": [2, 3]
+}
+
+###
+PUT http://localhost:3000/api/peliculas/16
+Content-Type: application/json
+
+
