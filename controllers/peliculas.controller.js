@@ -105,4 +105,40 @@ self.delete = async function(req, res) {
     }
 }
 
+//PostCategoriaPelicula()
+self.asignaCategoria = async function(req, res) {
+    try{
+        let itemToAssign = await categoria.findByPk(req.body.categoriaId);
+        if (!itemToAssign)
+            return res.status(404).send()
+
+        let item = await pelicula.findByPk(req.params.id);
+        if (!item)
+            return res.status(404).send()
+
+        await item.addCategoria(itemToAssign);
+        return res.status(204).send()
+    }catch(error){
+        return res.status(500).json(error)
+    }
+}
+
+//DeleteCategoriaPelicula()
+self.eliminaCategoria = async function(req, res) {
+    try{
+        let itemToRemove = await categoria.findByPk(req.params.idcategoria);
+        if (!itemToRemove)
+            return res.status(404).send()
+
+        let item = await pelicula.findByPk(req.params.id);
+        if (!item)
+            return res.status(404).send()
+
+        await item.removeCategoria(itemToRemove);
+        return res.status(204).send()
+    }catch(error){
+        return res.status(500).json(error)
+    }
+}
+
 module.exports = self;
